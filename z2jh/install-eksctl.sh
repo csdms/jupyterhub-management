@@ -7,10 +7,15 @@ else
     prefix="${CONDA_PREFIX}"
 fi
 
-# for ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
+# For ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
 # ARCH=amd64
-# PLATFORM=$(uname -s)_$ARCH
-PLATFORM=$(uname -s)_$(uname -m)
+os=$(uname -s)
+if [[ $os == "Linux" ]]; then
+    arch="amd64"
+else
+    arch=$(uname -m)
+fi
+PLATFORM=${os}_${arch}
 
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 
