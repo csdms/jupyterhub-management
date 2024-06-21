@@ -2,20 +2,20 @@
 # Install `eksctl`, the AWS EKS CLI.
 
 if [[ -z "${CONDA_PREFIX}" ]]; then
-    prefix="/usr/local"
+    PREFIX="/usr/local"
 else
-    prefix="${CONDA_PREFIX}"
+    PREFIX="${CONDA_PREFIX}"
 fi
 
 # For ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
 # ARCH=amd64
-os=$(uname -s)
-if [[ $os == "Linux" ]]; then
-    arch="amd64"
+OS=$(uname -s)
+if [[ $OS == "Linux" ]]; then
+    ARCH="amd64"
 else
-    arch=$(uname -m)
+    ARCH=$(uname -m)
 fi
-PLATFORM=${os}_${arch}
+PLATFORM=${OS}_${ARCH}
 
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 
@@ -24,4 +24,4 @@ curl -sL "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_ch
 
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
-sudo mv /tmp/eksctl $prefix/bin
+sudo mv /tmp/eksctl $PREFIX/bin
