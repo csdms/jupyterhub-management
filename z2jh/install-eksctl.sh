@@ -10,10 +10,9 @@ fi
 # For ARM systems, set ARCH to: `arm64`, `armv6` or `armv7`
 # ARCH=amd64
 OS=$(uname -s)
-if [[ $OS == "Linux" ]]; then
+ARCH=$(uname -m)
+if [[ $ARCH == "x86_64" ]]; then
     ARCH="amd64"
-else
-    ARCH=$(uname -m)
 fi
 PLATFORM=${OS}_${ARCH}
 
