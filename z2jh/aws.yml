@@ -1,0 +1,6 @@
+# An environment for the AWS CLI.
+name: aws
+channels:
+  - conda-forge
+dependencies:
+  - awscli
