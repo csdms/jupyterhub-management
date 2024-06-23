@@ -5,3 +5,4 @@ channels:
 dependencies:
   - awscli
   - curl
+  - kubernetes-helm
