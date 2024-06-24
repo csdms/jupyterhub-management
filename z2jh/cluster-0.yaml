@@ -1,0 +1,16 @@
+# An eksctl ClusterConfig example.
+---
+kind: ClusterConfig
+apiVersion: eksctl.io/v1alpha5
+
+metadata:
+  name: csdms-demo-0
+  region: us-west-1
+
+nodeGroups:
+  - name: ng-0
+    instanceType: t3a.medium
+    desiredCapacity: 2
+    volumeSize: 20
+    volumeType: gp2
+    availabilityZones: ["us-west-1a", "us-west-1b"]
