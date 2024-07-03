@@ -1,0 +1,7 @@
+# A conda environment for running Nebari.
+name: nebari
+channels:
+  - conda-forge
+dependencies:
+  - nebari
+  - curl

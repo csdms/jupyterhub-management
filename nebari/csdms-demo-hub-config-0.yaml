@@ -1,0 +1,50 @@
+# Nebari config file (nebari-config.yaml) for the CSDMS `demo` JupyterHub.
+provider: aws
+namespace: dev
+nebari_version: 2024.5.1
+project_name: csdms-demo-hub-0
+ci_cd:
+  type: github-actions
+terraform_state:
+  type: remote
+security:
+  keycloak:
+    initial_root_password: 5zvn2dj1uxev759257zz52p3ug522zjw
+  authentication:
+    type: password
+theme:
+  jupyterhub:
+    hub_title: Nebari - csdms-demo-hub-0
+    welcome: Welcome! Learn about Nebari's features and configurations in <a href="https://www.nebari.dev/docs/welcome">the
+      documentation</a>. If you have any questions or feedback, reach the team on
+      <a href="https://www.nebari.dev/docs/community#getting-support">Nebari's support
+      forums</a>.
+    hub_subtitle: Your open source data science platform, hosted on Amazon Web Services
+amazon_web_services:
+  kubernetes_version: '1.29'
+  region: us-west-1
+  node_groups:
+    general:
+      instance: m5.2xlarge
+      min_nodes: 1
+      max_nodes: 1
+      gpu: false
+      single_subnet: false
+      permissions_boundary:
+    user:
+      instance: m5.xlarge
+      min_nodes: 0
+      max_nodes: 5
+      gpu: false
+      single_subnet: false
+      permissions_boundary:
+    worker:
+      instance: m5.xlarge
+      min_nodes: 0
+      max_nodes: 5
+      gpu: false
+      single_subnet: false
+      permissions_boundary:
+  availability_zones:
+  - us-west-1a
+  - us-west-1c

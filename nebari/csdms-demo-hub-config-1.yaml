@@ -1,0 +1,74 @@
+# Nebari config file for the CSDMS `demo` JupyterHub.
+provider: aws
+namespace: dev
+nebari_version: 2024.5.1
+project_name: csdms-demo-hub-1
+domain: staging.openearthscape.org
+
+ci_cd:
+  type: github-actions
+
+certificate:
+  type: lets-encrypt
+  acme_email: mark.piper@colorado.edu
+  acme_server: https://acme-v02.api.letsencrypt.org/directory
+
+security:
+  keycloak:
+    initial_root_password: bhzxowm039oa069ve2kvrm7csxq7ty7n
+  authentication:
+    type: password
+
+theme:
+  jupyterhub:
+    hub_title: CSDMS demonstration JupyterHub
+    hub_subtitle: Experiment with CSDMS software!
+    welcome: |
+      Welcome to the CSDMS demonstration JupyterHub!
+      Use this Hub to experiment with CSDMS software such as Landlab, pymt, and Data Components.
+      Learn about CSDMS at <a href="https://csdms.colorado.edu">https://csdms.colorado.edu</a>.
+      If you have any questions or feedback, reach us at the <a href="https://csdms.github.io/help-desk">CSDMS Help Desk</a>.
+    logo: https://raw.githubusercontent.com/csdms/jupyterhub-management/main/assets/csdms-logo.png
+
+terraform_state:
+  type: remote
+
+amazon_web_services:
+  kubernetes_version:
+  region: us-west-1
+  node_groups:
+    general:
+      instance: m6i.xlarge
+      min_nodes: 1
+      max_nodes: 1
+      gpu: false
+      single_subnet: false
+      permissions_boundary:
+    user:
+      instance: m6i.large
+      min_nodes: 0
+      max_nodes: 5
+      gpu: false
+      single_subnet: false
+      permissions_boundary:
+    worker:
+      instance: m6i.xlarge
+      min_nodes: 0
+      max_nodes: 5
+      gpu: false
+      single_subnet: false
+      permissions_boundary:
+  availability_zones:
+  - us-west-1a
+  - us-west-1c
+
+environments:
+  "csdms.yaml":
+    name: csdms
+    channels:
+      - conda-forge
+    dependencies:
+      - python=3
+      - ipykernel
+      - ipywidgets
+      - landlab
