@@ -21,3 +21,23 @@ sets the name of the JupyterHub (e.g., "lab", "jupyter").
 * [maintenance.html](./maintenance.html): A replacement for [login.html](./login.html)
   during the twice-yearly maintenance periods.
   Rename it to `login.html` and follow the instructions above.
+
+To set up the common `scratch/` and `data/` directories:
+
+1. Make the directories in `/srv/`:
+    ```
+    $ ll /srv/
+    total 16
+    drwxr-xr-x  4 root root             4096 Jul 21  2022 ./
+    drwxr-xr-x 19 root root             4096 Jun  3 19:54 ../
+    drwxr-xr-x  6 root root             4096 May 16 14:26 data/
+    drwxrwsrwx  6 root jupyterhub-users 4096 May 15 17:51 scratch/
+    ```
+
+1. Make a symlink to `data/` in `/`:
+    ```
+    cd /
+    sudo ln -s /srv/data .
+    ```
+
+1. Make symlinks to `scratch/` and `data/` in `/etc/skel/`.
