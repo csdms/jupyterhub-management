@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+# List and count the users that have a directory matching the argument in their
+# home directory.
+#
+#   $ metricize terrainbento
+#   Users (count=1):
+#   /home/mdpiper/terrainbento
+
+USERS=$(sudo -E find /home -maxdepth 2 -type d -name $1)
+N_USERS=$(echo "$USERS" | wc -l)
+
+echo "Users (count=$N_USERS):"
+echo "$USERS"
+
+exit 0
