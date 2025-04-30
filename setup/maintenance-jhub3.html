@@ -1,5 +1,5 @@
 {% extends "page.html" %}
-{% if announcement_login is string %}
+{% if announcement_login %}
   {% set announcement = announcement_login %}
 {% endif %}
 
@@ -7,6 +7,7 @@
 {% endblock %}
 
 {% block main %}
+
 
 {% block login %}
 <div id="login-main" class="container">
@@ -30,7 +31,7 @@
     <p>Visit the <a href="https://csdms.colorado.edu/wiki/JupyterHub">CSDMS wiki</a> to learn how to obtain a login for this site.</p>
   </div>
 
-  <a role="button" class='btn btn-jupyter btn-lg' href='{{ authenticator_login_url | safe }}'>
+  <a role="button" class='btn btn-jupyter btn-lg' href='{{authenticator_login_url}}'>
     Sign in
   </a>
 
@@ -54,7 +55,7 @@
   </p>
 </div>
 
-<form action="{{ authenticator_login_url | safe }}" method="post" role="form"  style="vertical-align:top;">
+<form action="{{login_url}}?next={{next}}" method="post" role="form" style="vertical-align:top;">
 
   <div class="auth-form-header" style="background:#984744;">
     Sign in
@@ -71,14 +72,12 @@
       {{login_error}}
     </p>
     {% endif %}
-    <input type="hidden" name="_xsrf" value="{{ xsrf }}"/>
     <label for="username_input">Username:</label>
     <input
       id="username_input"
       type="text"
       autocapitalize="off"
       autocorrect="off"
-      autocomplete="username"
       class="form-control"
       name="username"
       val="{{username}}"
@@ -89,7 +88,6 @@
     <input
       type="password"
       class="form-control"
-      autocomplete="current-password"
       name="password"
       id="password_input"
       tabindex="2"
@@ -99,10 +97,10 @@
       <input
         id="login_submit"
         type="submit"
-        class='btn btn-jupyter form-control'
+        class='btn btn-jupyter'
         value='Sign in'
         tabindex="3"
-        style="background:#984744;"
+	style="background:#984744;"
         />
       <div class="feedback-widget hidden">
         <i class="fa fa-spinner"></i>
