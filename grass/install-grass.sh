@@ -26,7 +26,7 @@ while getopts ":hp:" option; do
 done
 
 if [ ! -d $GRASS_DIR ]; then
-    git clone --depth 1 --branch 8.3.1 https://github.com/OSGeo/grass.git $GRASS_DIR
+    git clone --depth 1 --branch 8.4.1 https://github.com/OSGeo/grass.git $GRASS_DIR
 fi
 
 pushd $GRASS_DIR
