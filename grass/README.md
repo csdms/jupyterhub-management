@@ -1,14 +1,15 @@
 # GRASS GIS
 
-I've tried two paths for installing GRASS GIS:
+I've tried three paths for installing GRASS GIS:
 
-1. through the OS
+1. build from source
+1. install OS packages
 1. in a conda environment
 
-The first installs GRASS globally on the OS.
-The second isolates GRASS in a virtual environment.
+The first two install GRASS globally on the OS.
+The third isolates GRASS in a Python virtual environment.
 
-## Install through the OS (Ubuntu)
+## Build from source with OS packages (Ubuntu)
 
 These are the steps I took to install GRASS GIS on the *lab* and *jupyter* EarthscapeHub instances.
 
@@ -57,6 +58,32 @@ sudo -E python -m ipykernel install --name grass --display-name "GRASS GIS" --pr
 ```
 
 That's it.
+
+## Install from OS packages (Ubuntu)
+
+I used the following steps to install GRASS on the *explore* EarthscapeHub instance in May 2025.
+
+As above, start by upgrading the system packages.
+```
+sudo apt upgrade
+```
+
+Add the [ubuntugis-stable](https://launchpad.net/~ubuntugis/+archive/ubuntu/ppa) channel to the system software sources.
+```
+sudo add-apt-repository ppa:ubuntugis/ppa
+sudo apt update
+```
+
+> [!NOTE]  
+> I used the [ubuntugis-unstable](https://launchpad.net/~ubuntugis/+archive/ubuntu/ubuntugis-unstable) PPA on *explore* because noble wasn't on the stable PPA.
+
+Install the GRASS development package with libraries.
+```
+sudo apt install grass-dev
+```
+
+As above, set up a conda environment with dependencies and make a Jupyter kernel.
+
 
 ## Install into a conda environment
 
