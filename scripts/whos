@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+systemctl list-units | grep jupyterhub-singleuser | awk -F".service" '/service/{print $1}' | awk -F"jupyter-" '/jupyter/{print $2}'
+exit 0
