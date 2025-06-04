@@ -1,0 +1,9 @@
+# An environment for working with minikube.
+
+name: kube
+channels:
+  - conda-forge
+dependencies:
+  - minikube
+  - kubernetes
+  - kubernetes-helm
