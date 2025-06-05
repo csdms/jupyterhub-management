@@ -1,0 +1,12 @@
+# JupyterHub Helm chart configuration for a local minikube cluster.
+
+# I've turned off persistent user storage because of permissions issues.
+# I think this is a local issue with the Docker Desktop driver.
+
+hub:
+  db:
+    type: sqlite-memory
+
+singleuser:
+  storage:
+    type: none
