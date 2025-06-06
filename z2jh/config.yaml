@@ -1,0 +1,17 @@
+# JupyterHub Helm chart configuration
+
+hub:
+  db:
+    type: sqlite-memory
+
+singleuser:
+  storage:
+    type: none
+  image:
+    # Fixed versions: https://quay.io/repository/jupyter/scipy-notebook?tab=tags
+    # Dockerfile: https://github.com/jupyter/docker-stacks/blob/main/images/scipy-notebook/Dockerfile
+    name: jupyter/scipy-notebook
+    tag: latest
+  # `cmd: null` allows the custom CMD of the Jupyter docker-stacks
+  # to be used which performs further customization on startup.
+  cmd: null
