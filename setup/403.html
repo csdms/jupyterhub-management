@@ -1,0 +1,9 @@
+{% extends "error.html" %}
+
+{% block h1_error %}
+  <h1>Registration required!</h1>
+{% endblock h1_error %}
+{% block error_detail %}
+<p>If you've reached this page, your GitHub account needs to be added to the list of allowed users for this site.</p>
+<p>Please see <a href="https://csdms.colorado.edu/wiki/JupyterHubGitHubSignUp">these instructions</a> to sign up and sign in.</p>
+{% endblock %}

@@ -22,6 +22,8 @@ sets the name of the JupyterHub (e.g., "lab", "jupyter").
   during the twice-yearly maintenance periods.
   Rename it to `login.html` and follow the instructions above.
 
+* [403.html](./403.html): The page a user sees if their GitHub account isn't on the allow list for the Hub. Place this file in the `templates` directory described above.
+
 To set up the common `scratch/` and `data/` directories:
 
 1. Make the directories in `/srv/`:
