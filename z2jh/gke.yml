@@ -4,6 +4,7 @@ name: gke
 channels:
   - conda-forge
 dependencies:
+  - python=3.12
   - google-cloud-sdk
   - kubernetes
   - kubernetes-helm
