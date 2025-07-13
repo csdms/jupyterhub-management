@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+# Set up the Google Cloud SDK environment.
+#
+# Use:
+#   source activate_gcloud
+
+if [ -f '/Users/mpiper/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mpiper/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/mpiper/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mpiper/google-cloud-sdk/completion.zsh.inc'; fi
