@@ -4,11 +4,13 @@
 # Use:
 #   source activate_gcloud
 
-GOOGLE_CLOUD_SDK_DIR=${HOME}/Applications/google-cloud-sdk
+CLOUDSDK_DIR=${HOME}/Applications/google-cloud-sdk
+export CLOUDSDK_PYTHON=${HOME}/anaconda3/bin/python
 
-if [ -f ${GOOGLE_CLOUD_SDK_DIR}/path.zsh.inc ]; then
-    . ${GOOGLE_CLOUD_SDK_DIR}/path.zsh.inc;
+if [ -f ${CLOUDSDK_DIR}/path.zsh.inc ]; then
+    . ${CLOUDSDK_DIR}/path.zsh.inc;
+    PS1="[gke] $PS1"
 fi
-if [ -f ${GOOGLE_CLOUD_SDK_DIR}/completion.zsh.inc ]; then
-    . ${GOOGLE_CLOUD_SDK_DIR}/completion.zsh.inc;
+if [ -f ${CLOUDSDK_DIR}/completion.zsh.inc ]; then
+    . ${CLOUDSDK_DIR}/completion.zsh.inc;
 fi
