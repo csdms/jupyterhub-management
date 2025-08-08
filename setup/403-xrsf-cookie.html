@@ -1,0 +1,10 @@
+<!-- For Hubs using FirstUseAuthenticator -->
+{% extends "error.html" %}
+
+{% block h1_error %}
+  <h1>Cookie expired!</h1>
+{% endblock h1_error %}
+{% block error_detail %}
+<p>If you've reached this page, the cookie for a previous JupyterHub session needs to be cleared. (I don't know why this isn't done automatically.)</p>
+<p>Please go back to the login page, refresh it, and try to login again.</p>
+{% endblock %}

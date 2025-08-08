@@ -22,7 +22,9 @@ sets the name of the JupyterHub (e.g., "lab", "jupyter").
   during the twice-yearly maintenance periods.
   Rename it to `login.html` and follow the instructions above.
 
-* [403.html](./403.html): The page a user sees if their GitHub account isn't on the allow list for the Hub. Place this file in the `templates` directory described above.
+* [403-allowed.html](./403.html): The page a user sees if their GitHub account isn't on the allow list for the Hub. Copy this file to `403.html` in the `templates` directory described above. Use this on the *jupyter* and *frontier* Hubs.
+
+* [403-xsrf-cookie.html](./403.html): The page a user sees if the XSRF cookie from a previous Hub login expired. Copy this file to `403.html` in the `templates` directory described above. Use this on the *explore* Hub.
 
 To set up the common `scratch/` and `data/` directories:
 
