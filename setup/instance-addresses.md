@@ -9,7 +9,7 @@ including the JupyterHubs and csdms.io.
 | explore      | `52.8.89.49`
 | jupyter      | `44.239.190.110`
 | frontier     | `35.86.30.205`
-| test         | `13.57.91.137`
+| test         | `54.183.4.216`
 | csdms.io     | `13.56.97.225`
 
 Connect to a Hub with:
@@ -17,4 +17,4 @@ Connect to a Hub with:
 ssh -i "csdms-jh.pem" USER@IP_ADDRESS
 ```
 where `USER` is `ubuntu` for the Hubs,
-and `ec2-user` for csdms.io.
+and `ec2-user` for csdms.io and test.
