@@ -1,0 +1,16 @@
+# A conda environment for an EarthscapeHub kernel.
+#
+# Usage:
+#   $ sudo -E conda env create --file pyvista.yaml
+#   $ source activate pyvista
+#   $ # install kernel as "PyVista"
+
+name: pyvista
+channels:
+  - conda-forge
+dependencies:
+  - ipykernel
+  - pip
+  - python =3
+  - pip:
+    - -r pyvista-requirements.in
