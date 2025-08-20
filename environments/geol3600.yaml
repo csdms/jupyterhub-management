@@ -1,0 +1,17 @@
+# A conda environment for an EarthscapeHub kernel.
+#
+# Usage:
+#   $ sudo -E conda env create --file geol3600.yaml
+#   $ source activate geol3600
+#   $ # install kernel as "GEOL 3600"
+
+name: geol3600
+channels:
+  - conda-forge
+dependencies:
+  - ipykernel
+  - pip
+  - python =3
+  - pip:
+    - -r pyvista-requirements.in
+    - -r geol3600-requirements.in

@@ -1,0 +1,15 @@
+# Requirements for GEOL 3600
+
+geopandas
+landlab
+matplotlib
+numpy
+opencv-python
+pillow
+pygmt
+pyvista
+scipy
+seaborn
+scikit-learn
+scikit-image
+webcolors
