@@ -1,0 +1,159 @@
+{% extends "page.html" %}
+{% if announcement_login is string %}
+  {% set announcement = announcement_login %}
+{% endif %}
+
+{% block login_widget %}
+{% endblock %}
+
+{% block main %}
+
+{% block login %}
+<div id="login-main" class="container">
+{% block login_container %}
+{% if custom_html %}
+{{ custom_html | safe }}
+{% elif login_service %}
+<div class="service-login">
+
+  <div style="padding: 0% 25% 2.5% 25%;">
+    <h1>Decommission Notice</h1>
+    <p>
+      This JupyterHub will be permanently shut down on 2025 September 30.
+      Please contact us 
+      through the <a href="https://csdms.github.io/help-desk/">CSDMS Help Desk</a>
+      and we can help you transition to
+      the <a href="https://explore.openearthscape.org">explore</a> or 
+      <a href="https://jupyter.openearthscape.org">jupyter</a> instance
+      of EarthscapeHub.
+    </p>
+  </div>
+
+  <div style="margin-bottom:40px;">
+    <p>Visit the <a href="https://csdms.colorado.edu/wiki/JupyterHub">CSDMS wiki</a> to learn how to obtain a login for this site.</p>
+  </div>
+
+  <a role="button" class='btn btn-jupyter btn-lg' href='{{ authenticator_login_url | safe }}'>
+    Sign in
+  </a>
+
+  <div style="margin-top:40px; padding-left:30%; padding-right:30%;">
+    <p>The <a href="https://csdms.colorado.edu">Community Surface Dynamics Modeling System</a> (CSDMS) and <a href="https://openearthscape.org">OpenEarthscape</a> are supported by the U.S. National Science Foundation.</p>
+    <a href="https://www.nsf.gov" target="_blank">
+      <img alt="National Science Foundation" style="width:50px;" src="https://csdms.colorado.edu/csdms_wiki/skins/common/nsf1.gif">
+    </a>
+  </div>
+
+</div>
+{% else %}
+
+<div style="padding: 0% 20% 0% 20%;">
+  <h1 style="text-align: center">Maintenance</h1>
+  <p>
+    This JupyterHub will be undergoing maintenance 2024 December 18-20.
+    You can still use it, but your work may be interrupted, so save often.
+    If you encounter any problems, please contact us
+    through the <a href="https://csdms.github.io/help-desk/">CSDMS Help Desk</a>.
+  </p>
+</div>
+
+<form action="{{ authenticator_login_url | safe }}" method="post" role="form"  style="vertical-align:top;">
+
+  <div class="auth-form-header" style="background:#984744;">
+    Sign in
+  </div>
+  <div class='auth-form-body'>
+
+    <p id='insecure-login-warning' class='hidden'>
+    Warning: JupyterHub seems to be served over an unsecured HTTP connection.
+    We strongly recommend enabling HTTPS for JupyterHub.
+    </p>
+
+    {% if login_error %}
+    <p class="login_error">
+      {{login_error}}
+    </p>
+    {% endif %}
+    <input type="hidden" name="_xsrf" value="{{ xsrf }}"/>
+    <label for="username_input">Username:</label>
+    <input
+      id="username_input"
+      type="text"
+      autocapitalize="off"
+      autocorrect="off"
+      autocomplete="username"
+      class="form-control"
+      name="username"
+      val="{{username}}"
+      tabindex="1"
+      autofocus="autofocus"
+    />
+    <label for='password_input'>Password:</label>
+    <input
+      type="password"
+      class="form-control"
+      autocomplete="current-password"
+      name="password"
+      id="password_input"
+      tabindex="2"
+    />
+
+    <div class="feedback-container">
+      <input
+        id="login_submit"
+        type="submit"
+        class='btn btn-jupyter form-control'
+        value='Sign in'
+        tabindex="3"
+        style="background:#984744;"
+        />
+      <div class="feedback-widget hidden">
+        <i class="fa fa-spinner"></i>
+      </div>
+    </div>
+
+    {% block login_terms %}
+    {% if login_term_url %}
+    <div id="login_terms" class="login_terms">
+    <input type="checkbox" id="login_terms_checkbox" name="login_terms_checkbox" required />
+    {% block login_terms_text %} {# allow overriding the text #}
+    By logging into the platform you accept the <a href="{{ login_term_url }}">terms and conditions</a>.
+    {% endblock login_terms_text %}
+    </div>
+    {% endif %}
+    {% endblock login_terms %}
+
+  </div>
+
+  <div style="margin-top:20px; padding-left:10%; padding-right:10%; text-align:center; font-size:75%;">
+    <p>The <a href="https://csdms.colorado.edu">Community Surface Dynamics Modeling System</a> (CSDMS) and <a href="https://openearthscape.org">OpenEarthscape</a> are supported by the U.S. National Science Foundation.</p>
+    <a href="https://www.nsf.gov" target="_blank">
+      <img alt="National Science Foundation" style="width:50px;" src="https://csdms.colorado.edu/csdms_wiki/skins/common/nsf1.gif">
+    </a>
+  </div>
+
+</form>
+{% endif %}
+{% endblock login_container %}
+</div>
+{% endblock login %}
+
+{% endblock %}
+
+{% block script %}
+{{ super() }}
+<script>
+if (window.location.protocol === "http:") {
+  // unhide http warning
+  var warning = document.getElementById('insecure-login-warning');
+  warning.className = warning.className.replace(/\bhidden\b/, '');
+}
+// setup onSubmit feedback
+$('form').submit((e) => {
+  var form = $(e.target);
+  form.find('.feedback-container>input').attr('disabled', true);
+  form.find('.feedback-container>*').toggleClass('hidden');
+  form.find('.feedback-widget>*').toggleClass('fa-pulse');
+});
+</script>
+{% endblock %}
