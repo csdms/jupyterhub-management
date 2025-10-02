@@ -9,10 +9,10 @@ including the JupyterHubs and csdms.io.
 | explore      | `52.8.89.49`
 | jupyter      | `44.239.190.110`
 | frontier     | `35.86.30.205`
-| test         | `54.183.4.216`
+| test         |
 | csdms.io     | `13.56.97.225`
 
-Connect to a Hub with:
+Connect to an EC2 instance with:
 ```sh
 ssh -i "csdms-jh.pem" USER@IP_ADDRESS
 ```
