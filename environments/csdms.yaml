@@ -19,7 +19,7 @@ dependencies:
   - imageio
   - imageio-ffmpeg
   - ipykernel
-  - landlab >=2.6
+  - landlab >=2.10
   - matplotlib
   - netcdf4
   - notebook
@@ -30,15 +30,15 @@ dependencies:
   - pillow
   - pip
   - pymt >=1.3
-  - pymt_cem
-  - pymt_child
-  - pymt_ecsimplesnow
+#  - pymt_cem
+#  - pymt_child
+#  - pymt_ecsimplesnow
   - pymt_era5
-  - pymt_gipl
-  - pymt_hydrotrend
-  - pymt_nwis
+#  - pymt_gipl
+#  - pymt_hydrotrend
+#  - pymt_nwis
   - pymt_permamodel
-  - pymt_sedflux
+#  - pymt_sedflux
   - pymt_soilgrids
   - pymt_topography
   - python =3
@@ -47,6 +47,7 @@ dependencies:
   - scikit-image
   - scipy
   - seaborn
+  - sympy
   - terrainbento
   - tqdm
   - xarray
