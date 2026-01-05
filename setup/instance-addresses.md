@@ -6,7 +6,7 @@ including the JupyterHubs and csdms.io.
 | **Instance** | **IP address**
 | ---          | ---
 | lab          | `54.151.127.133`
-| explore      | `52.8.89.49`
+| explore      | `54.177.181.44`
 | jupyter      | `44.239.190.110`
 | frontier     | `35.86.30.205`
 | test         |
